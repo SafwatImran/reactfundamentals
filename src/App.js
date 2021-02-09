@@ -5,14 +5,21 @@ import Child from './Child.js'
 
  
 function App() {
-  const [counter, setCounter] =  React.useState(0);
-
+  const [currency, setCurrency] = React.useState('USD')
+  const [rates, setRates] = React.useState({});
+  React.useEffect(()=>{
+    fetch('https://api.ratesapi.io/api/latest?base=' + currency).then(res=>res.json()).then(data=>{
+      setRates(data.rates);
+    });
+  }, [currency]);
+  const setUSD = () => setCurrency('USD')
+  const setEUR = () => setCurrency('EUR')
   return (
     <div className="App">
-    <h1>Sub Components</h1>
-     <p>Counter : {counter}</p>
-     <Child step={1} setCounter= {setCounter}/>
-     <Child step={5} setCounter= {setCounter}/>    
+    <h1>The Effect Hook</h1>
+    <button onClick={setUSD}>USD</button><button onClick={setEUR}>setEUR</button>
+    <h2> {currency} Exchange Rate</h2>
+    {Object.keys(rates).map(currency => <li>{currency}: {rates[currency]}</li>) } 
     </div>
   );
 }
