@@ -1,8 +1,8 @@
 import React from "react"
 
 export default function Child ({step, counter, setCounter}){
-    const inc = ()=>setCounter(counter+step);
-    const dec = () =>setCounter(counter-step);
+    const inc = ()=>setCounter(x=>x+step);
+    const dec = () =>setCounter(x=>x-step);
     return (
         <div>
             <button onClick={inc}>+{step}</button>

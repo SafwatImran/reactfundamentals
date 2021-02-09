@@ -11,8 +11,8 @@ function App() {
     <div className="App">
     <h1>Sub Components</h1>
      <p>Counter : {counter}</p>
-     <Child step={1} counter={counter} setCounter= {setCounter}/>
-     <Child step={5} counter={counter} setCounter= {setCounter}/>    
+     <Child step={1} setCounter= {setCounter}/>
+     <Child step={5} setCounter= {setCounter}/>    
     </div>
   );
 }
